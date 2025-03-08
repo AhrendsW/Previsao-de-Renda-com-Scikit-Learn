@@ -169,3 +169,30 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Cursor rules e configurações
+.cursorrules
+.cursor/
+
+# Arquivos grandes de dados
+# data/*.csv
+# data/*.joblib
+
+# Logs gerados pela aplicação
+logs/*.log
+
+# Modelos e gráficos
+models/*.joblib
+models/*.csv
+models/*.png
+
+# Visualizações
+visualizations/*.png
+
+
+# VS Code
+.vscode/
+
+# Arquivos temporários do sistema
+.DS_Store
+Thumbs.db
