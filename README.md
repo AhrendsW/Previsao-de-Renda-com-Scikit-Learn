@@ -37,14 +37,15 @@ source .venv/bin/activate  # Linux/Mac
 pip install -r requirements.txt
 ```
 
-3. Execute o pipeline completo ou cada etapa individualmente:
+3. Instale o pacote em modo de desenvolvimento:
+```bash
+pip install -e .
+```
+
+4. Execute o pipeline completo ou cada etapa individualmente:
 
 ### Pipeline Completo
 ```bash
-# Instalar o pacote em modo de desenvolvimento
-pip install -e .
-
-# Executar o pipeline completo
 python src/data/data_acquisition.py
 python src/data/preprocessamento.py
 python src/data/feature_engineering.py
@@ -113,11 +114,12 @@ Para avaliar a performance dos modelos, utilizamos as seguintes métricas:
 
 Os modelos treinados alcançaram as seguintes performances no conjunto de teste:
 
-| Modelo              | Acurácia | F1-Score | ROC-AUC |
-|---------------------|----------|----------|---------|
-| Regressão Logística | 0.82     | 0.67     | 0.88    |
-| XGBoost             | 0.87     | 0.75     | 0.92    |
-| XGBoost (otimizado) | 0.88     | 0.77     | 0.93    |
+| Modelo                    | Acurácia | F1-Score | ROC-AUC |
+|---------------------------|----------|----------|---------|
+| Regressão Logística       | 0.827    | 0.587    | 0.878   |
+| XGBoost                   | 0.831    | 0.613    | 0.882   |
+| Regressão Logística (otim)| 0.827    | 0.587    | 0.878   |
+| XGBoost (otimizado)       | 0.837    | 0.621    | 0.887   |
 
 O modelo XGBoost otimizado foi selecionado como o melhor modelo devido à sua performance superior em todas as métricas avaliadas.
 

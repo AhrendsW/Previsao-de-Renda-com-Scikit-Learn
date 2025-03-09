@@ -33,7 +33,6 @@ numpy==1.24.3
 packaging==23.2
 pandas==2.1.0
 pillow==10.4.0
--e git+https://github.com/AhrendsW/Previsao-de-Renda-com-Scikit-Learn.git@f4e91921affb6656583bf9efb50ea6e213ad563f#egg=previsao_renda
 protobuf==4.25.6
 pyarrow==19.0.1
 pydantic==2.10.6
