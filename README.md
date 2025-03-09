@@ -59,7 +59,7 @@ uvicorn src.api.api:app --reload
 
 ### Executar a Interface Web
 ```bash
-streamlit run src.ui.app
+streamlit run src/ui/app.py
 ```
 
 ## 📊 Dataset
