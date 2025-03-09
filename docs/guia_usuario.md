@@ -4,22 +4,71 @@ Este guia explica como utilizar a interface web Streamlit do projeto de Previsã
 
 ## Iniciando a Interface
 
-Para iniciar a interface Streamlit, siga os passos abaixo:
+Para utilizar o sistema completo, você precisará executar tanto a API quanto a interface Streamlit. Como cada um ocupa um terminal, siga um dos métodos abaixo:
 
-1. Certifique-se de que todas as dependências estão instaladas:
-   ```bash
-   pip install -r requirements.txt
-   ```
+### Método 1: Usando o Script Automatizado
 
-2. Execute o comando:
-   ```bash
-   streamlit run src/ui/app.py
-   ```
+A maneira mais simples é usar o script `run_all.py` que inicia ambos os serviços automaticamente:
 
-3. A interface será aberta automaticamente no seu navegador padrão, geralmente em:
-   ```
-   http://localhost:8501
-   ```
+```bash
+# Certifique-se de que o ambiente virtual está ativado
+.venv\Scripts\activate  # Windows
+source .venv/bin/activate  # Linux/Mac
+
+# Execute o script
+python run_all.py
+```
+
+Isso abrirá dois terminais separados, um para a API e outro para o Streamlit.
+
+### Método 2: Execução Manual em Terminais Separados
+
+Se preferir iniciar manualmente:
+
+**Terminal 1 - API:**
+```bash
+# Ative o ambiente virtual
+.venv\Scripts\activate  # Windows
+source .venv/bin/activate  # Linux/Mac
+
+# Execute a API
+uvicorn src.api.api:app --reload
+```
+
+**Terminal 2 - Interface Streamlit:**
+```bash
+# Ative o ambiente virtual
+.venv\Scripts\activate  # Windows
+source .venv/bin/activate  # Linux/Mac
+
+# Execute o Streamlit
+streamlit run src/ui/app.py
+```
+
+A interface será aberta automaticamente no seu navegador padrão, geralmente em:
+```
+http://localhost:8501
+```
+
+A API estará disponível em:
+```
+http://localhost:8000
+```
+
+### Como Parar a Aplicação
+
+Quando terminar de usar a aplicação, você pode pará-la seguindo estas instruções:
+
+#### Parando o Script Automatizado (Método 1)
+Se você iniciou a aplicação usando o script `run_all.py`:
+
+1. Feche manualmente as janelas dos terminais abertos pelo script, ou
+2. Em cada terminal, pressione `Ctrl+C` para interromper o processo correspondente.
+
+#### Parando a Execução Manual (Método 2)
+Se você iniciou a API e o Streamlit manualmente em terminais separados:
+
+Em cada terminal onde a API ou o Streamlit estão rodando, pressione `Ctrl+C` para interromper o processo.
 
 ## Navegando pela Interface
 
@@ -45,19 +94,19 @@ Esta é a seção principal para realizar previsões:
 
 1. **Entrada de Dados**: Preencha os campos com as informações do indivíduo:
    - Idade
-   - Classe de trabalho (selecione da lista)
-   - Nível educacional (selecione da lista)
-   - Estado civil (selecione da lista)
-   - Ocupação (selecione da lista)
-   - Relacionamento (selecione da lista)
-   - Raça (selecione da lista)
+   - Tipo de Trabalho (selecione da lista)
+   - Escolaridade (selecione da lista)
+   - Estado Civil (selecione da lista)
+   - Área de Atuação (selecione da lista)
+   - Situação Familiar (selecione da lista)
+   - Como você se identifica (etnia)
    - Sexo (selecione da lista)
-   - Ganho de capital
-   - Perda de capital
-   - Horas trabalhadas por semana
-   - País de origem (selecione da lista)
+   - Rendimentos Extras (Anual)
+   - Perdas Financeiras (Anual)
+   - Horas por Semana
+   - País de Origem (selecione da lista)
 
-2. **Realizar Previsão**: Clique no botão "Prever Renda" para obter o resultado.
+2. **Realizar Previsão**: Clique no botão "Calcular Minha Renda" para obter o resultado.
 
 3. **Resultados**: A previsão será exibida, indicando:
    - A faixa de renda prevista (">50K" ou "<=50K")
@@ -84,19 +133,19 @@ Esta seção contém:
 
 1. Preencha os campos com:
    - Idade: 45
-   - Classe de trabalho: Private
-   - Nível educacional: Bachelors
-   - Estado civil: Married-civ-spouse
-   - Ocupação: Exec-managerial
-   - Relacionamento: Husband
-   - Raça: White
-   - Sexo: Male
-   - Ganho de capital: 0
-   - Perda de capital: 0
-   - Horas trabalhadas por semana: 50
-   - País de origem: United-States
+   - Tipo de Trabalho: Empresa Privada
+   - Escolaridade: Superior Completo
+   - Estado Civil: Casado(a)
+   - Área de Atuação: Gerente/Diretor
+   - Situação Familiar: Chefe de Família
+   - Como você se identifica: Branca
+   - Sexo: Masculino
+   - Rendimentos Extras (Anual): 0
+   - Perdas Financeiras (Anual): 0
+   - Horas por Semana: 50
+   - País de Origem: Brasil
 
-2. Clique em "Prever Renda"
+2. Clique em "Calcular Minha Renda"
 
 3. O resultado provavelmente indicará uma renda ">50K" com alta probabilidade.
 
@@ -104,19 +153,19 @@ Esta seção contém:
 
 1. Preencha os campos com:
    - Idade: 25
-   - Classe de trabalho: Private
-   - Nível educacional: HS-grad
-   - Estado civil: Never-married
-   - Ocupação: Service
-   - Relacionamento: Own-child
-   - Raça: Black
-   - Sexo: Male
-   - Ganho de capital: 0
-   - Perda de capital: 0
-   - Horas trabalhadas por semana: 40
-   - País de origem: United-States
+   - Tipo de Trabalho: Empresa Privada
+   - Escolaridade: Ensino Médio Completo
+   - Estado Civil: Solteiro(a)
+   - Área de Atuação: Prestador de Serviços
+   - Situação Familiar: Filho(a)
+   - Como você se identifica: Preta
+   - Sexo: Masculino
+   - Rendimentos Extras (Anual): 0
+   - Perdas Financeiras (Anual): 0
+   - Horas por Semana: 40
+   - País de Origem: Brasil
 
-2. Clique em "Prever Renda"
+2. Clique em "Calcular Minha Renda"
 
 3. O resultado provavelmente indicará uma renda "<=50K" com alta probabilidade.
 

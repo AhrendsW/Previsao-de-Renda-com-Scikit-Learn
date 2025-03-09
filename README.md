@@ -52,15 +52,103 @@ python src/data/feature_engineering.py
 python src/models/modelagem.py
 ```
 
-### Executar a API
+### Executar a API e a Interface Web
+
+Para utilizar o sistema completo, você precisará executar tanto a API quanto a interface Streamlit. Como cada um ocupa um terminal, siga um dos métodos abaixo:
+
+#### Método 1: Usando Terminais Separados
+
+**Terminal 1 - API:**
 ```bash
+# Ative o ambiente virtual
+.venv\Scripts\activate  # Windows
+source .venv/bin/activate  # Linux/Mac
+
+# Execute a API
 uvicorn src.api.api:app --reload
 ```
 
-### Executar a Interface Web
+**Terminal 2 - Interface Streamlit:**
 ```bash
+# Ative o ambiente virtual
+.venv\Scripts\activate  # Windows
+source .venv/bin/activate  # Linux/Mac
+
+# Execute o Streamlit
 streamlit run src/ui/app.py
 ```
+
+#### Método 2: Usando Processos em Background (Windows)
+
+```bash
+# Inicie a API em background
+start cmd /k ".venv\\Scripts\\activate && uvicorn src.api.api:app --reload"
+
+# Inicie o Streamlit no terminal atual
+.venv\Scripts\activate && streamlit run src/ui/app.py
+```
+
+#### Método 3: Usando Processos em Background (Linux/Mac)
+
+```bash
+# Inicie a API em background
+source .venv/bin/activate && uvicorn src.api.api:app --reload &
+
+# Inicie o Streamlit no terminal atual
+source .venv/bin/activate && streamlit run src/ui/app.py
+```
+
+#### Método 4: Usando o Script Automatizado
+
+O projeto já inclui um arquivo `run_all.py` na raiz que inicia automaticamente tanto a API quanto o Streamlit em terminais separados. Para utilizá-lo:
+
+```bash
+# Certifique-se de que o ambiente virtual está ativado
+.venv\Scripts\activate  # Windows
+source .venv/bin/activate  # Linux/Mac
+
+# Execute o script
+python run_all.py
+```
+
+Este script abrirá dois terminais separados, um para a API e outro para o Streamlit, e exibirá as URLs onde cada serviço estará disponível.
+
+### Como Parar a Aplicação
+
+Dependendo do método que você utilizou para iniciar a aplicação, existem diferentes formas de pará-la:
+
+#### Parando Terminais Separados (Método 1)
+Em cada terminal onde a API ou o Streamlit estão rodando:
+```bash
+# Pressione a combinação de teclas
+Ctrl+C
+```
+
+#### Parando Processos em Background no Windows (Método 2)
+Para parar a API rodando em background:
+```bash
+# No terminal onde você iniciou o processo
+taskkill /F /IM cmd.exe /T
+```
+Ou feche manualmente a janela do terminal onde a API está rodando.
+
+#### Parando Processos em Background no Linux/Mac (Método 3)
+Para parar a API rodando em background:
+```bash
+# Encontre o PID do processo uvicorn
+ps aux | grep uvicorn
+
+# Mate o processo usando o PID encontrado
+kill -9 <PID>
+```
+
+Para o Streamlit, pressione `Ctrl+C` no terminal onde ele está rodando.
+
+#### Parando o Script Automatizado (Método 4)
+Quando você usa o script `run_all.py`, ele abre terminais separados. Para parar:
+
+1. Feche manualmente as janelas dos terminais abertos pelo script, ou
+2. Em cada terminal, pressione `Ctrl+C` para interromper o processo correspondente.
 
 ## 📊 Dataset
 
