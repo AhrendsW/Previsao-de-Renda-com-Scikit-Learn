@@ -25,8 +25,8 @@ Desenvolvido com Python 3.9.5 e bibliotecas modernas de ciência de dados, este 
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/seu-usuario/previsao-de-renda-com-scikit-learn.git
-cd previsao-de-renda-com-scikit-learn
+git clone https://github.com/AhrendsW/Previsao-de-Renda-com-Scikit-Learn.git
+cd Previsao-de-Renda-com-Scikit-Learn
 ```
 
 2. Crie um ambiente virtual e instale as dependências:
@@ -63,7 +63,9 @@ streamlit run src.ui.app
 
 ## 📊 Dataset
 
-O projeto utiliza o dataset Adult Income do UCI Machine Learning Repository, que contém informações sobre:
+O projeto utiliza o dataset Adult Income do UCI Machine Learning Repository, disponível em: [https://archive.ics.uci.edu/dataset/2/adult](https://archive.ics.uci.edu/dataset/2/adult)
+
+Este dataset contém informações sobre:
 - Características demográficas (idade, sexo, raça)
 - Nível educacional
 - Ocupação e classe de trabalho
@@ -90,6 +92,34 @@ O objetivo é prever se a renda anual de um indivíduo é superior a $50K.
 - **XGBoost**: Algoritmo de gradient boosting otimizado para performance.
 
 Os resultados comparativos dos modelos estão disponíveis no diretório `models/`.
+
+## 📊 Métricas de Avaliação
+
+Para avaliar a performance dos modelos, utilizamos as seguintes métricas:
+
+### Métricas Principais
+
+- **Acurácia**: Proporção de previsões corretas em relação ao total de amostras.
+- **F1-Score**: Média harmônica entre precisão e recall, equilibrando falsos positivos e falsos negativos.
+- **ROC-AUC**: Área sob a curva ROC, medindo a capacidade do modelo de distinguir entre as classes.
+
+### Visualizações de Performance
+
+- **Matriz de Confusão**: Visualização que mostra a distribuição de previsões corretas e incorretas para cada classe.
+- **Curva ROC**: Gráfico que ilustra a performance do modelo em diferentes limiares de classificação.
+- **Importância das Features**: Ranking das características mais relevantes para as previsões do modelo.
+
+### Resultados Obtidos
+
+Os modelos treinados alcançaram as seguintes performances no conjunto de teste:
+
+| Modelo              | Acurácia | F1-Score | ROC-AUC |
+|---------------------|----------|----------|---------|
+| Regressão Logística | 0.82     | 0.67     | 0.88    |
+| XGBoost             | 0.87     | 0.75     | 0.92    |
+| XGBoost (otimizado) | 0.88     | 0.77     | 0.93    |
+
+O modelo XGBoost otimizado foi selecionado como o melhor modelo devido à sua performance superior em todas as métricas avaliadas.
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -129,6 +159,56 @@ Para contribuir com o projeto:
 3. Commit suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
 4. Push para a branch (`git push origin feature/NovaFuncionalidade`)
 5. Abra um Pull Request
+
+## 🚀 Próximos Passos
+
+Este projeto pode ser expandido e melhorado de várias maneiras. Abaixo estão algumas sugestões para trabalhos futuros:
+
+### 1. Deploy da API em Ambiente de Produção
+
+- **Containerização com Docker**: Criar um Dockerfile para empacotar a API e suas dependências
+- **Deploy em Plataformas Cloud**:
+  - AWS Elastic Beanstalk ou Lambda para serverless
+  - Google Cloud Run ou App Engine
+  - Azure App Service
+  - Heroku ou Render para soluções mais simples
+- **Configuração de CI/CD**: Implementar pipeline de integração e deploy contínuos
+- **Autenticação e Segurança**: Adicionar camadas de autenticação (JWT, OAuth) e proteção contra ataques
+
+### 2. Deploy da Interface Streamlit
+
+- **Streamlit Cloud**: Hospedar a interface na plataforma Streamlit Cloud
+- **Hugging Face Spaces**: Alternativa para deploy gratuito
+- **Integração com Domínio Personalizado**: Configurar um domínio próprio para a aplicação
+- **Otimização de Performance**: Melhorar o tempo de carregamento e responsividade
+
+### 3. Exploração de Modelos Avançados
+
+- **Deep Learning**: Implementar redes neurais com TensorFlow ou PyTorch
+- **Modelos de Ensemble Avançados**: Stacking ou Blending de múltiplos modelos
+- **AutoML**: Explorar frameworks como AutoGluon, TPOT ou Auto-Sklearn
+- **Modelos Interpretáveis**: Implementar modelos mais interpretáveis como RuleFit ou SHAP
+
+### 4. Atualização e Expansão dos Dados
+
+- **Dados Mais Recentes**: Buscar fontes de dados atualizadas sobre renda e características socioeconômicas
+- **Enriquecimento com Fontes Adicionais**: Combinar com outros datasets para obter mais features
+- **Dados Brasileiros**: Adaptar o modelo para o contexto brasileiro usando dados do IBGE ou PNAD
+- **Coleta Contínua**: Implementar um sistema para atualização periódica dos dados
+
+### 5. Melhorias na Experiência do Usuário
+
+- **Dashboard Interativo**: Expandir a interface com visualizações mais ricas e interativas
+- **Explicabilidade**: Adicionar explicações detalhadas sobre as previsões (LIME, SHAP)
+- **Personalização**: Permitir que usuários salvem perfis e comparem diferentes cenários
+- **Versão Mobile**: Otimizar a interface para dispositivos móveis
+
+### 6. Monitoramento e Manutenção
+
+- **Monitoramento de Drift**: Implementar detecção de data drift e model drift
+- **Logging Avançado**: Integrar com ferramentas como ELK Stack ou Prometheus
+- **Retreinamento Automático**: Sistema para retreinar o modelo periodicamente
+- **Testes A/B**: Comparar performance de diferentes versões do modelo em produção
 
 ## 📄 Licença
 

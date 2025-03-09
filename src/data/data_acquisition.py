@@ -1,6 +1,9 @@
 """
 Módulo responsável pela aquisição dos dados do UCI Machine Learning Repository.
 Este módulo contém funções para carregar e realizar a validação inicial dos dados.
+
+Dataset: Adult Income (Census Income)
+URL: https://archive.ics.uci.edu/dataset/2/adult
 """
 
 import pandas as pd
@@ -13,6 +16,9 @@ logger = configurar_logger('aquisicao_dados')
 def carregar_dados() -> Tuple[pd.DataFrame, pd.DataFrame, Dict[str, Any]]:
     """
     Carrega os dados do UCI ML Repository e retorna as features, target e metadados.
+    
+    Dataset utilizado: Adult Income (id=2)
+    URL: https://archive.ics.uci.edu/dataset/2/adult
     
     Returns:
         Tuple contendo:
